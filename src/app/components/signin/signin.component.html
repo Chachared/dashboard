@@ -1,1 +1,25 @@
-<p>signin works!</p>
+<div class="auth-wrapper mx-3 my-3">
+  <form class="form-signin" [formGroup]="signinForm" (ngSubmit)="loginUser()">
+    <h3 class="h3 mb-3 font-weight-normal text-center">Veuillez vous connecter</h3>
+    <div class="form-group">
+      <label>Nom d'utilisateur</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="username"
+        placeholder="Nom d'utilisateur"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Mot de passe</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="Mot de passe"
+      />
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Connexion</button>
+  </form>
+</div>
