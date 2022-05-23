@@ -1,39 +1,23 @@
 <div class="container">
-  <div class="row">
-    <!--1ere row de stat-cards-->
-    <div class="col-4 my-2">
-      <app-stat-card></app-stat-card>
-    </div>
-    <div class="col-4 my-2">
-      <app-stat-card></app-stat-card>
-    </div>
-    <div class="col-4 my-2">
-      <app-stat-card></app-stat-card>
-    </div>
 
-    <!--2eme row de stat-cards-->
-    <div class="col-4 my-2">
-      <app-stat-card></app-stat-card>
-    </div>
-    <div class="col-4 my-2">
-      <app-stat-card></app-stat-card>
-    </div>
-    <div class="col-4 my-2">
-      <app-stat-card></app-stat-card>
-    </div>
+    <ng-container *ngIf="loader">
+      <h2 class="text-center">Chargement des statistiques en cours ... </h2>
+    </ng-container>
+
+    <ng-container *ngIf="!loader">
+
+    <!--Row de stats simples-->
+    <app-stat-card></app-stat-card>
 
     <!--Row du tableau des meilleures ventes-->
     <app-product-table class="my-2"></app-product-table>
 
     <!--Row des diagrammes "camembert"-->
-    <div class="col-4 my-2">
+    <div class="row">
       <app-diagramm-card></app-diagramm-card>
     </div>
-    <div class="col-4 my-2">
-      <app-diagramm-card></app-diagramm-card>
-    </div>
-    <div class="col-4 my-2">
-      <app-diagramm-card></app-diagramm-card>
-    </div>
-  </div>
+
+    </ng-container>
+
 </div>
+

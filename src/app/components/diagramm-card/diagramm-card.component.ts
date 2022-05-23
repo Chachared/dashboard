@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, ChartDataset, ChartOptions, ChartType } from 'chart.js';
+import {Stats} from "../../models/stats";
+import {AuthService} from "../../services/auth/auth-service.service";
+import {Router} from "@angular/router";
+import {DatasService} from "../../services/datas/datas.service";
 
 @Component({
   selector: 'app-diagramm-card',
@@ -7,23 +11,35 @@ import { Chart, ChartDataset, ChartOptions, ChartType } from 'chart.js';
   styleUrls: ['./diagramm-card.component.css'],
 })
 export class DiagrammCardComponent implements OnInit {
+
+  //pour récupérer les données
+  loader = true;
+  stats!: Stats;
+
+  //pour les diagrammes
   type!: ChartType;
   labels!: string[];
   datasets!: ChartDataset[];
   options!: ChartOptions;
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router, private datasService: DatasService) {}
 
   ngOnInit(): void {
+    //pour récupérer les données
+    this.datasService.getStats().subscribe(data => {
+      this.stats = data;
+      this.loader = false
+    });
+    //pour le diagramme
     this.type = 'pie';
 
-    this.labels = ['Red', 'Orange', 'Yellow', 'Green', 'Blue'];
+    this.labels = ['nombre de nouveaux clients', 'nombre de clients inscrits depuis plus de 2 semaines'];
 
     this.datasets = [
       {
-        label: 'Dataset 1',
-        data: [20, 10, 5, 15, 50],
-        backgroundColor: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+        label: 'Ratio de nouveaux clients',
+        data: [this.stats.nbInvoices, 80],
+        backgroundColor: ['Red', 'Orange'],
       },
     ];
 
@@ -35,7 +51,7 @@ export class DiagrammCardComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Chart.js Doughnut Chart',
+          text: 'Nouveaux inscrits depuis 2 semaines',
         },
       },
     };

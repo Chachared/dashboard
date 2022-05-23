@@ -1,8 +1,30 @@
-
-  <div class="card shadow">
-    <div class="card-body text-center">
-      <h5 class="card-title">Nombre de commandes</h5>
-      <p class="fs-1">70</p>
+<div class="row">
+  <!--row de stat-cards-->
+  <div class="col-4 my-2">
+    <div class="card shadow">
+      <div class="card-body text-center">
+        <h5 class="card-title">Nombre de commandes:</h5>
+        <p class="fs-1">{{stats.nbInvoices}}</p>
+        <p>depuis la création du site</p>
+      </div>
     </div>
   </div>
-
+  <div class="col-4 my-2">
+    <div class="card shadow">
+      <div class="card-body text-center">
+        <h5 class="card-title">Nombre de nouveaux clients:</h5>
+        <p class="fs-1">{{stats.nbNewCustomers}}</p>
+        <p>inscrits depuis 15 jours</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4 my-2">
+    <div class="card shadow">
+      <div class="card-body text-center">
+        <h5 class="card-title">Chiffre d'affaire:</h5>
+        <p class="fs-1">{{stats.totalSales}} €</p>
+        <p>toutes taxes comprises</p>
+      </div>
+    </div>
+  </div>
+</div>

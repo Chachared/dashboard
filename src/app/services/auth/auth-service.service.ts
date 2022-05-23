@@ -12,14 +12,18 @@ import {User} from "../../models/user";
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'https://localhost:8000';
+  endpoint: string = 'http://localhost:8000';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
+
   constructor(private http: HttpClient, public router: Router) {}
 
   // Sign-in
   signIn(user: User) {
     return this.http
-      .post<any>(`${this.endpoint}/authentication_token`, user)
+      .post<any>(`${this.endpoint}/api/authentication_token`, {
+        "username":user.username,
+        "password":user.password
+      })
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
         this.router.navigate(['/dashboard']);

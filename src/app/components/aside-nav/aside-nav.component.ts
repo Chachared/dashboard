@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth/auth-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-aside-nav',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  logout(): void {
+    this.authService.doLogout();
+    this.router.navigate(['/login'])
+  }
 }
