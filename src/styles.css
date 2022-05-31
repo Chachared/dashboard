@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Raleway:wght@100;200;400;600;700;800&display=swap");
+body {
+  font-family: "Raleway";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.titre {
+  font-family: "Fuzzy Bubbles";
+}
