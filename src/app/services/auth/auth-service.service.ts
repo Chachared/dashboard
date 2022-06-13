@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
 
 import {
   HttpClient,
@@ -12,7 +14,7 @@ import {User} from "../../models/user";
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'http://localhost:8000';
+  endpoint: string = 'http://localhost:8000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, public router: Router) {}
@@ -20,7 +22,7 @@ export class AuthService {
   // Sign-in
   signIn(user: User) {
     return this.http
-      .post<any>(`${this.endpoint}/api/authentication_token`, {
+      .post<any>(`${this.endpoint}/authentication_token`, {
         "username":user.username,
         "password":user.password
       })
@@ -52,7 +54,7 @@ export class AuthService {
       msg = error.error.message;
     } else {
       // server-side error
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      msg = `Error Code: ${error.status}Message: ${error.message}`;
     }
     return throwError(msg);
   }
