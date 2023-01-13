@@ -8,7 +8,7 @@ import {Stats} from "../../models/stats";
 })
 export class DatasService {
 
-  endpoint: string = 'https://localhost:8000/api';
+  endpoint: string = 'http://localhost:8000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }

@@ -12,7 +12,7 @@ import {User} from "../../models/user";
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'https://localhost:8000';
+  endpoint: string = 'http://localhost:8000';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, public router: Router) {}
